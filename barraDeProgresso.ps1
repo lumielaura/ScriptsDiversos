@@ -1,3 +1,27 @@
+# teste
+for ($i = 1; $i -le 10; $i++ ) {
+
+  Start-Sleep -Milliseconds 250 # A rapida troca de causou alguns erros -> 1 segundo = 1000 milisegundos
+  $pbar = $i * 10; # Corrigindo o valor de progresso da barra
+  Write-Progress -Activity "Progresso da Instalacao" -Status "$pbar% Complete:" -PercentComplete $pbar
+
+  switch ($i) {
+    1 { "Tarefa: $i"; Start-Sleep -Seconds 3 }
+    2 { "Tarefa: $i"; Start-Sleep -Seconds 3 }
+    3 { Clear-Host; "Tarefa: $i"; Start-Sleep -Seconds 3 }
+    4 { Clear-Host; "Tarefa: $i"; Start-Sleep -Seconds 3 }
+    5 { Clear-Host; "Tarefa: $i"; Start-Sleep -Seconds 3 }
+    6 { "Tarefa: $i"; Start-Sleep -Seconds 3 }
+    7 { "Tarefa: $i"; Start-Sleep -Seconds 3 }
+    8 { "Tarefa: $i"; Start-Sleep -Seconds 3 }
+    9 { "Tarefa: $i"; Start-Sleep -Seconds 3 }
+    10 { "Tarefa: $i"; Start-Sleep -Seconds 3 }
+    Default {"Error!? $i"}
+  }
+}
+
+
+######## muito repetitivo para codigos grandes
 Write-Progress -Activity "Main Task" -Status "Task 1 of 3" -PercentComplete 33
 # Task 1 logic
 Start-Sleep -Seconds 3
@@ -11,9 +35,10 @@ Start-Sleep -Seconds 3
 Write-Progress -Activity "Main Task" -Status "Task 3 of 3" -PercentComplete 100
 # Task 3 logic
 Start-Sleep -Seconds 3
-
 "Completei a minha tarefa"
 
+
+######## esse deve ser o ideal para copia com varios itens
 $Items = 1..10000
  
 Write-Progress -Activity "Processing Items" -Status "Starting" -PercentComplete 0
@@ -30,6 +55,7 @@ foreach ($Item in $Items) {
 Write-Progress -Activity "Processing Items" -Status "Complete" -PercentComplete 100
 
 
+######## 
 # Set total time for countdown timer
 $timeRemaining = 20
  
@@ -48,6 +74,8 @@ while($timeRemaining -gt 0){
   Start-Sleep -Seconds 1
 }
 
+
+########
 Function Start-Countdown {
   param (
       [Parameter(Mandatory=$true)]
@@ -79,6 +107,7 @@ Function Start-Countdown {
 Start-Countdown -Seconds 10
 
 
+########
 $progressParams = @{
   Activity = "Processing data"
   Status = "In progress"
@@ -111,6 +140,7 @@ foreach ($item in $data) {
 Write-Progress -Completed -Activity "Completed"
 
 
+########
 $Collection = 1..100
 ForEach ($Item in $Collection) {
   Write-Progress -PercentComplete ($Item/100*100) -Status "Processing Items" -Activity "Item $item of 100"
@@ -119,11 +149,14 @@ ForEach ($Item in $Collection) {
 }
 
 
+########
 for ($i = 1; $i -le 100; $i++ ) {
-    Write-Progress -Activity "Search in Progress" -Status "$i% Complete:" -PercentComplete $i
-    Start-Sleep -Milliseconds 250
+  Write-Progress -Activity "Search in Progress" -Status "$i% Complete:" -PercentComplete $i
+  Start-Sleep -Milliseconds 250
 }
 
+
+########
 $PSStyle.Progress.View = 'Classic'
 
 foreach ( $i in 1..10 ) {

@@ -7,8 +7,7 @@ do {
     $comando = Test-Connection -Count 1 -Ping -IPv4 8.8.8.8 -Quiet
     Start-Sleep -Seconds 10;
     
-    switch ($comando) {
-        
+    switch ($comando) {        
         'True' { 
             # "Conexao de internet normal"   
             if ($swiKay -eq $true) {

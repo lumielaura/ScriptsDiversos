@@ -1,0 +1,4 @@
+=== Início do log do menu ===
+
+2025-05-14 20:10:02 - Usuário escolheu: Opção 2: 'Automatizar tarefas é uma forma de ganhar tempo.'
+2025-05-14 20:10:05 - Usuário escolheu: Sair sem selecionar

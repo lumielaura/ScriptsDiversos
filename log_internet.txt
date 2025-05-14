@@ -1,0 +1,2 @@
+2025-05-02 16:19:59 - ❌ Internet caiu!
+2025-05-02 16:20:23 - ✅ Internet voltou ao ar.

@@ -1,2 +1,8 @@
 2025-05-02 16:19:59 - ❌ Internet caiu!
 2025-05-02 16:20:23 - ✅ Internet voltou ao ar.
+2025-06-05 16:01:18 - ❌ A Conexão com a Internet foi Perdida! 🍂
+2025-06-05 16:02:58 - ✅ Internet Normal. ✨
+2025-06-08 03:50:42 - ❌ A Conexão com a Internet foi Perdida! 🍂
+2025-06-08 03:52:06 - ❌ A Conexão com a Internet foi Perdida! 🍂
+2025-06-08 03:52:23 - ❌ A Conexão com a Internet foi Perdida! 🍂
+2025-06-08 03:52:53 - ✅ Internet Normal. ✨

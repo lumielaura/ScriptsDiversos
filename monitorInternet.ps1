@@ -10,8 +10,8 @@ $intervalo = 10
 # site para testar
 $site = "8.8.8.8"
 
-# Estado anterior da conexão
-$conectadoAnteriormente = $true
+# Estado anterior da conexão (ainda será detectado no início)
+$conectadoAnteriormente = $null
 
 # Função para registrar no log
 function registrarLog {
@@ -22,21 +22,25 @@ function registrarLog {
     "$hora - $mensagem" | Out-File -FilePath $logPath -Append -Encoding utf8
 }
 
-Write-host "Monitorando conexão com a internet... (Ctrl + C para sair)"
-Write-host "Log: $logPath"
+Write-Host "========================================" -ForegroundColor Yellow
+Write-Host " Monitorando conexão com a internet...  " -ForegroundColor Cyan
+Write-Host " Testando conectividade com $site" -ForegroundColor Cyan
+Write-Host " Log: $logPath" -ForegroundColor DarkGray
+Write-Host " (Pressione Ctrl + C para sair)" -ForegroundColor DarkGray
+Write-Host "========================================" -ForegroundColor Yellow
 
 while ($true) {
     $ping = Test-Connection -ComputerName $site -Count 1 -Quiet
 
-    if ($ping -and -not $conectadoAnteriormente) {
+    if ($ping -and ($conectadoAnteriormente -ne $true)) {
         $mensagem = "✅ Internet Normal. ✨"
-        Write-host $mensagem -ForegroundColor Green
+        Write-Host $mensagem -ForegroundColor Green
         registrarLog $mensagem
         $conectadoAnteriormente = $true
     }
-    elseif (-not $ping -and $conectadoAnteriormente) {
+    elseif (-not $ping -and ($conectadoAnteriormente -ne $false)) {
         $mensagem = "❌ A Conexão com a Internet foi Perdida! 🍂"
-        Write-host $mensagem -ForegroundColor Red
+        Write-Host $mensagem -ForegroundColor Red
         registrarLog $mensagem
         $conectadoAnteriormente = $false
     }

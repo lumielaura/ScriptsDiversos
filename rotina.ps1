@@ -30,3 +30,5 @@ ForEach-Object -Process {
         $arquivos | ForEach-Object { Write-Output $_.Name }
     }
 }
+
+# ideias para script : fazer um status de antes e depois, principalmente sobre o espaço liberado.

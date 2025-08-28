@@ -1,0 +1,11 @@
+Administrative Tools.lnk
+Asphalt 9
+Closers.url
+desktop.ini
+EmuHawk.lnk
+Farlight 84.url
+File Explorer.lnk
+OneDrive.lnk
+Wuthering Waves.url
+YTDownloader.lnk
+反弹枪 Rebound Gun.url

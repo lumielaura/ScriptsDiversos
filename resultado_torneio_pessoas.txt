@@ -1,0 +1,77 @@
+
+==== TORNEIO ENTRE PESSOAS ====
+ - Sophia
+ - Aurora
+ - Laura
+ - Helena
+ - Ayla
+ - Heloísa
+ - Cecília
+ - Isabella
+ - Alice
+ - Maitê
+
+==== INÍCIO DO TORNEIO ====
+
+--- Rodada 1 ---
+Sophia venceu contra Aurora
+Laura venceu contra Helena
+Heloísa venceu contra Ayla
+Isabella venceu contra Cecília
+Alice venceu contra Maitê
+
+--- Rodada 2 ---
+Sophia venceu contra Laura
+Isabella venceu contra Heloísa
+
+Alice avançou automaticamente para a próxima fase.
+
+--- Rodada 3 ---
+Sophia venceu contra Isabella
+
+Alice avançou automaticamente para a próxima fase.
+
+--- Rodada 4 ---
+Sophia venceu contra Alice
+
+=== CAMPEÃO DO TORNEIO ===
+🏆 Sophia 🏆
+
+==== DIAGRAMA DO TORNEIO ====
+
+Rodada 1:
+Sophia   ──╮
+         ├─► Sophia  
+Aurora   ──╯
+Laura    ──╮
+         ├─► Laura   
+Helena   ──╯
+Ayla     ──╮
+         ├─► Heloísa 
+Heloísa  ──╯
+Cecília  ──╮
+         ├─► Isabella
+Isabella ──╯
+Alice    ──╮
+         ├─► Alice   
+Maitê    ──╯
+
+Rodada 2:
+Sophia   ──╮
+         ├─► Sophia  
+Laura    ──╯
+Heloísa  ──╮
+         ├─► Isabella
+Isabella ──╯
+Alice    ──► (avanço automático)
+
+Rodada 3:
+Sophia   ──╮
+         ├─► Sophia  
+Isabella ──╯
+Alice    ──► (avanço automático)
+
+Rodada 4:
+Sophia   ──╮
+         ├─► Sophia  
+Alice    ──╯

@@ -1,0 +1,167 @@
+
+==== TORNEIO ENTRE GRUPOS ====
+
+Grupo 1 (Total: 34 pessoas):
+ - Melissa
+ - Giovanna
+ - Luara
+ - Maria Júlia
+ - Laís
+ - Júlia
+ - Beatriz
+ - Malu
+ - Mayla
+ - Aylla Sophia
+ - Marina
+ - Sarah
+ - Milena
+ - Letícia
+ - Manuela
+ - Sophia
+ - Ana Cecília
+ - Maitê
+ - Maria
+ - Helena
+ - Maria Ísis
+ - Ana Beatriz
+ - Mirella
+ - Louise
+ - Maria Liz
+ - Isabel
+ - Cecília
+ - Ayla
+ - Stella
+ - Luísa
+ - Diana
+ - Ana Laura
+ - Betina
+ - Pérola
+
+Grupo 2 (Total: 33 pessoas):
+ - Emilly
+ - Liz
+ - Laura
+ - Maria Valentina
+ - Eloá
+ - Clarice
+ - Ísis
+ - Luna
+ - Maria Clara
+ - Melina
+ - Clara
+ - Elis
+ - Hadassa
+ - Ana Liz
+ - Lívia
+ - Bella
+ - Alana
+ - Vitória
+ - Ana Luiza
+ - Antonella
+ - Aurora
+ - Maria Elisa
+ - Maria Cecília
+ - Rafaela
+ - Mariana
+ - Isabelly
+ - Chloe
+ - Bianca
+ - Lavínia
+ - Olívia
+ - Gabriela
+ - Maria Vitória
+ - Elisa
+
+Grupo 3 (Total: 33 pessoas):
+ - Emanuelly
+ - Heloísa
+ - Isadora
+ - Mariah
+ - Eva
+ - Lara
+ - Ana Clara
+ - Maria Heloísa
+ - Lorena
+ - Valentina
+ - Catarina
+ - Maria Eduarda
+ - Maria Alice
+ - Jade
+ - Agatha
+ - Ana Júlia
+ - Zoe
+ - Maria Flor
+ - Ana Vitória
+ - Maria Laura
+ - Rebeca
+ - Maya
+ - Mavie
+ - Esther
+ - Alícia
+ - Alice
+ - Maria Luiza
+ - Serena
+ - Ana
+ - Melinda
+ - Maria Helena
+ - Yasmin
+ - Isabella
+
+==== INÍCIO DO TORNEIO ====
+
+--- Rodada 1 ---
+Grupo 2 venceu contra Grupo 1
+
+Grupo 3 avançou automaticamente para a próxima fase.
+
+--- Rodada 2 ---
+Grupo 2 venceu contra Grupo 3
+
+=== CAMPEÃO DO TORNEIO ===
+Grupo 2 (Total: 33 pessoas):
+ - Emilly
+ - Liz
+ - Laura
+ - Maria Valentina
+ - Eloá
+ - Clarice
+ - Ísis
+ - Luna
+ - Maria Clara
+ - Melina
+ - Clara
+ - Elis
+ - Hadassa
+ - Ana Liz
+ - Lívia
+ - Bella
+ - Alana
+ - Vitória
+ - Ana Luiza
+ - Antonella
+ - Aurora
+ - Maria Elisa
+ - Maria Cecília
+ - Rafaela
+ - Mariana
+ - Isabelly
+ - Chloe
+ - Bianca
+ - Lavínia
+ - Olívia
+ - Gabriela
+ - Maria Vitória
+ - Elisa
+
+==== DIAGRAMA DO TORNEIO ====
+
+Rodada 1:
+Grupo 1 ──╮
+           ├─► Grupo 2
+Grupo 2 ──╯
+Grupo 3 ──► (avanço automático)
+
+Rodada 2:
+Grupo 2 ──╮
+           ├─► Grupo 2
+Grupo 3 ──╯

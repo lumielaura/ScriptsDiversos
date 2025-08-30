@@ -1,167 +1,171 @@
 
 ==== TORNEIO ENTRE GRUPOS ====
 
-Grupo 1 (Total: 34 pessoas):
- - Melissa
- - Giovanna
- - Luara
- - Maria Júlia
- - Laís
- - Júlia
- - Beatriz
- - Malu
- - Mayla
- - Aylla Sophia
- - Marina
- - Sarah
- - Milena
- - Letícia
- - Manuela
- - Sophia
- - Ana Cecília
- - Maitê
- - Maria
- - Helena
- - Maria Ísis
- - Ana Beatriz
- - Mirella
- - Louise
- - Maria Liz
- - Isabel
- - Cecília
- - Ayla
- - Stella
- - Luísa
- - Diana
- - Ana Laura
- - Betina
- - Pérola
-
-Grupo 2 (Total: 33 pessoas):
- - Emilly
- - Liz
- - Laura
- - Maria Valentina
- - Eloá
- - Clarice
- - Ísis
+Grupo 1 (Total: 50 pessoas):
  - Luna
- - Maria Clara
- - Melina
- - Clara
- - Elis
- - Hadassa
+ - Clarice
+ - Stella
+ - Cecília
  - Ana Liz
- - Lívia
- - Bella
- - Alana
- - Vitória
- - Ana Luiza
- - Antonella
- - Aurora
- - Maria Elisa
- - Maria Cecília
- - Rafaela
- - Mariana
- - Isabelly
- - Chloe
- - Bianca
- - Lavínia
+ - Isabella
+ - Laís
+ - Valentina
+ - Luísa
+ - Betina
  - Olívia
- - Gabriela
- - Maria Vitória
+ - Letícia
+ - Ana Vitória
+ - Luara
+ - Liz
+ - Maitê
+ - Louise
+ - Bianca
+ - Ana Luiza
+ - Jade
+ - Laura
+ - Helena
+ - Ana Cecília
+ - Maria Eduarda
+ - Ana Laura
  - Elisa
-
-Grupo 3 (Total: 33 pessoas):
+ - Rafaela
+ - Maria Flor
  - Emanuelly
  - Heloísa
- - Isadora
- - Mariah
- - Eva
- - Lara
- - Ana Clara
- - Maria Heloísa
- - Lorena
- - Valentina
- - Catarina
- - Maria Eduarda
- - Maria Alice
- - Jade
- - Agatha
- - Ana Júlia
- - Zoe
- - Maria Flor
- - Ana Vitória
- - Maria Laura
+ - Aurora
+ - Lívia
+ - Mirella
  - Rebeca
- - Maya
- - Mavie
- - Esther
- - Alícia
- - Alice
- - Maria Luiza
+ - Isabelly
+ - Catarina
+ - Maria Liz
+ - Marina
  - Serena
- - Ana
- - Melinda
+ - Bella
+ - Maria Cecília
+ - Maria Heloísa
+ - Eloá
+ - Maria Vitória
+ - Mariana
+ - Diana
+ - Melissa
+ - Lara
+ - Maria
+ - Milena
+
+Grupo 2 (Total: 50 pessoas):
+ - Maria Alice
+ - Mavie
+ - Maria Valentina
+ - Lavínia
+ - Esther
+ - Sarah
+ - Manuela
+ - Giovanna
+ - Chloe
  - Maria Helena
+ - Elis
+ - Maria Elisa
+ - Mayla
+ - Ayla
  - Yasmin
- - Isabella
+ - Maria Clara
+ - Gabriela
+ - Maya
+ - Eva
+ - Hadassa
+ - Emilly
+ - Agatha
+ - Aylla Sophia
+ - Isabel
+ - Ana
+ - Alícia
+ - Maria Luiza
+ - Mariah
+ - Ana Júlia
+ - Ísis
+ - Pérola
+ - Clara
+ - Alice
+ - Antonella
+ - Melina
+ - Malu
+ - Melinda
+ - Júlia
+ - Beatriz
+ - Maria Ísis
+ - Lorena
+ - Zoe
+ - Isadora
+ - Ana Beatriz
+ - Maria Laura
+ - Vitória
+ - Sophia
+ - Maria Júlia
+ - Ana Clara
+ - Alana
 
 ==== INÍCIO DO TORNEIO ====
 
 --- Rodada 1 ---
-Grupo 2 venceu contra Grupo 1
-
-Grupo 3 avançou automaticamente para a próxima fase.
-
---- Rodada 2 ---
-Grupo 2 venceu contra Grupo 3
+Grupo 1 venceu contra Grupo 2
 
 === CAMPEÃO DO TORNEIO ===
-Grupo 2 (Total: 33 pessoas):
- - Emilly
- - Liz
- - Laura
- - Maria Valentina
- - Eloá
- - Clarice
- - Ísis
+Grupo 1 (Total: 50 pessoas):
  - Luna
- - Maria Clara
- - Melina
- - Clara
- - Elis
- - Hadassa
+ - Clarice
+ - Stella
+ - Cecília
  - Ana Liz
- - Lívia
- - Bella
- - Alana
- - Vitória
- - Ana Luiza
- - Antonella
- - Aurora
- - Maria Elisa
- - Maria Cecília
- - Rafaela
- - Mariana
- - Isabelly
- - Chloe
- - Bianca
- - Lavínia
+ - Isabella
+ - Laís
+ - Valentina
+ - Luísa
+ - Betina
  - Olívia
- - Gabriela
- - Maria Vitória
+ - Letícia
+ - Ana Vitória
+ - Luara
+ - Liz
+ - Maitê
+ - Louise
+ - Bianca
+ - Ana Luiza
+ - Jade
+ - Laura
+ - Helena
+ - Ana Cecília
+ - Maria Eduarda
+ - Ana Laura
  - Elisa
+ - Rafaela
+ - Maria Flor
+ - Emanuelly
+ - Heloísa
+ - Aurora
+ - Lívia
+ - Mirella
+ - Rebeca
+ - Isabelly
+ - Catarina
+ - Maria Liz
+ - Marina
+ - Serena
+ - Bella
+ - Maria Cecília
+ - Maria Heloísa
+ - Eloá
+ - Maria Vitória
+ - Mariana
+ - Diana
+ - Melissa
+ - Lara
+ - Maria
+ - Milena
 
 ==== DIAGRAMA DO TORNEIO ====
 
 Rodada 1:
 Grupo 1 ──╮
-           ├─► Grupo 2
+           ├─► Grupo 1
 Grupo 2 ──╯
-Grupo 3 ──► (avanço automático)
-
-Rodada 2:
-Grupo 2 ──╮
-           ├─► Grupo 2
-Grupo 3 ──╯

@@ -1,0 +1,41 @@
+{
+  "Produtos": {
+    "Presunto": {
+      "Validade": "25/08/2025",
+      "Quantidade": 10,
+      "DataRegistro": "31/08/2025 13:43",
+      "UltimaAlteracao": "31/08/2025 13:43"
+    },
+    "Banana": {
+      "Validade": "02/09/2025",
+      "Quantidade": 5,
+      "DataRegistro": "31/08/2025 13:36",
+      "UltimaAlteracao": "31/08/2025 13:36"
+    },
+    "Caju": {
+      "Validade": "01/12/2025",
+      "Quantidade": 20,
+      "DataRegistro": "31/08/2025 13:37",
+      "UltimaAlteracao": "31/08/2025 13:37"
+    },
+    "Queijo": {
+      "Validade": "01/10/2025",
+      "Quantidade": 5,
+      "DataRegistro": "31/08/2025 13:38",
+      "UltimaAlteracao": "31/08/2025 13:38"
+    },
+    "Maçã": {
+      "Validade": null,
+      "Quantidade": 7,
+      "DataRegistro": "31/08/2025 13:36",
+      "UltimaAlteracao": "31/08/2025 13:36"
+    },
+    "Cheiro-Verde": {
+      "Validade": null,
+      "Quantidade": 3,
+      "DataRegistro": "31/08/2025 13:36",
+      "UltimaAlteracao": "31/08/2025 13:36"
+    }
+  },
+  "LimiteEstoqueBaixo": 5
+}

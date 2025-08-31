@@ -3,9 +3,9 @@ $VerbosePreference = "Continue";
 
 # Limpando as pastas
 # TEMP, %TEMP%, Prefetch
-"C:\Windows\Temp",
-"$HOME\AppData\Local\Temp",
-"C:\Windows\Prefetch" |
+"$env:SystemRoot\Temp",
+"$env:TEMP",
+"$env:SystemRoot\Prefetch" |
 ForEach-Object -Process {
     Get-ChildItem -Path $_ -Recurse | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue;
 }
@@ -16,9 +16,9 @@ Clear-RecycleBin -Force;
 Write-Output "`n...O processo de limpeza foi concluido...`n"
 
 # Listando os itens nao apagados
-"C:\Windows\Temp",
-"$HOME\AppData\Local\Temp",
-"C:\Windows\Prefetch" |
+"$env:SystemRoot\Temp",
+"$env:TEMP",
+"$env:SystemRoot\Prefetch" |
 ForEach-Object -Process {
     
     # Obtém os arquivos (sem incluir subpastas)
@@ -27,7 +27,7 @@ ForEach-Object -Process {
     # Se houver arquivos, exibe quantidade e nomes
     if ($arquivos.Count -gt 0) {
         Write-Output "`nArquivos encontrados em ($_): $($arquivos.Count)`n"
-        $arquivos | ForEach-Object { Write-Output $_.Name }
+        $arquivos | ForEach-Object { Write-Output $_.FullName }
     }
 }
 

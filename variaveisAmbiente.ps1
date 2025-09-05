@@ -11,7 +11,7 @@ Get-ChildItem ENV: | Where-Object {$_.Name -match "PATH|TEMP" }
 Get-ChildItem ENV: | Where-Object {$_.Name -match "^PATH$|^TEMP$" , "*File" } | Format-Table -Wrap
 
 # =================================
-# Caracters usados com o "-match"
+# Characters usados com o "-match"
 # =================================
 # ^ Defini o inicio do nome
 # $ Defini o final do nome

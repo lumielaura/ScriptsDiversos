@@ -15,11 +15,13 @@ $servicos = @(
     "MapsBroker",            # Downloaded Maps Manager
     "wisvc"                  # Windows Insider Service
 )
+# Organizando servoços em ordem alfabética
+$servicos = $servicos | Sort-Object
 
 Write-Host "=== Serviços raramente usados encontrados no sistema ===`n"
 
 # Exibir status atual
-Get-Service -Name $servicos -ErrorAction SilentlyContinue | ForEach-Object {
+Get-Service -Name $servicos -ErrorAction SilentlyContinue | Sort-Object | ForEach-Object {
     Write-Host "Serviço     : " -NoNewline
     Write-Host "$($_.DisplayName)" -ForegroundColor DarkYellow
     Write-Host "Nome        : $($_.Name)"
@@ -85,10 +87,11 @@ switch ($escolha) {
                     Write-Host "$($svc.StartType)" -NoNewline -ForegroundColor Green
                 }
                 Write-Host ")`nDescrição: `n$($svc.Description)"
-                $op = Read-Host "`nDigite [M]anual, [D]esativar ou [N]ão alterar"
+                $op = Read-Host "`nDigite [M]anual, [D]esativar, [A]utomático ou [N]ão alterar"
                 switch ($op.ToUpper()) {
                     "M" { Set-Service -Name $s -StartupType Manual; Write-Host "➡ Alterado para Manual" -ForegroundColor Gray }
                     "D" { Set-Service -Name $s -StartupType Disabled; Write-Host "➡ Desativado" -ForegroundColor Red }
+                    "A" { Set-Service -Name $s -StartupType Automatic; Write-Host "➡ Desativado" -ForegroundColor Red }
                     default { Write-Host "⏭ Nenhuma alteração" }
                 }
             }

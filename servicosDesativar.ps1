@@ -21,7 +21,7 @@ $servicos = $servicos | Sort-Object
 Write-Host "=== Serviços raramente usados encontrados no sistema ===`n"
 
 # Exibir status atual
-Get-Service -Name $servicos -ErrorAction SilentlyContinue | Sort-Object | ForEach-Object {
+Get-Service -Name $servicos -ErrorAction SilentlyContinue | Sort-Object {$_.DisplayName} | ForEach-Object {
     Write-Host "Serviço     : " -NoNewline
     Write-Host "$($_.DisplayName)" -ForegroundColor DarkYellow
     Write-Host "Nome        : $($_.Name)"

@@ -67,6 +67,7 @@ do {
 
     do {
         desenharMenu $index $opcoes
+        # Este comando espera pela entrada do usuario, essa entrada sera gravada na variavel key
         $key = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
         switch ($key.VirtualKeyCode) {

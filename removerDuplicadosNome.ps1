@@ -28,8 +28,8 @@ function Move-ToRecycleBin {
 }
 
 # Obter listas de arquivos (nome apenas, sem caminho completo)
-$files1 = Get-ChildItem -Path $folder1 -File | Select-Object Name, FullName
-$files2 = Get-ChildItem -Path $folder2 -File | Select-Object Name, FullName
+$files1 = Get-ChildItem -Path $folder1 -File -Recurse | Select-Object Name, FullName
+$files2 = Get-ChildItem -Path $folder2 -File -Recurse | Select-Object Name, FullName
 
 # Encontrar arquivos com nomes repetidos
 $duplicateNames = Compare-Object -ReferenceObject $files1.Name -DifferenceObject $files2.Name -IncludeEqual -ExcludeDifferent |

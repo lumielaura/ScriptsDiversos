@@ -36,8 +36,8 @@ function Move-ToRecycleBin {
 }
 
 # Obter arquivos
-$files1 = Get-ChildItem -Path $folder1 -File | Select-Object Name, FullName
-$files2 = Get-ChildItem -Path $folder2 -File | Select-Object Name, FullName
+$files1 = Get-ChildItem -Path $folder1 -File -Recurse | Select-Object Name, FullName
+$files2 = Get-ChildItem -Path $folder2 -File -Recurse | Select-Object Name, FullName
 
 # Arquivos com nomes duplicados
 $duplicateNames = Compare-Object -ReferenceObject $files1.Name -DifferenceObject $files2.Name -IncludeEqual -ExcludeDifferent |

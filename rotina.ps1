@@ -1,5 +1,4 @@
 # Rotina que limpa todo o lixo eletronico peridioticamente
-$VerbosePreference = "Continue";
 
 # Limpando as pastas
 # TEMP, %TEMP%, Prefetch
@@ -30,14 +29,14 @@ ForEach-Object -Process {
     
     # Se houver arquivos, exibe quantidade e nomes
     if ($arquivos.Count -gt 0) {
-        Write-Output "`nRestaram $($arquivos.Count) arquivos no diretorio ($_)`nEles estao sendo usados e nao podem ser apagados neste momento.`n"
+        Write-Output "`nRestaram $($arquivos.Count) arquivos no diretório ($_)`nEles estao sendo usados e não podem ser apagados neste momento.`n"
         # $arquivos | ForEach-Object { Write-Output $_.FullName }
     }
 }
 
 # Removendo essa regra estranha do firewall
 if (Get-NetFirewallRule -DisplayName "*allow*" -OutVariable disableAllow) {
-    Write-Output "`nForam removidas $($disableAllow.Count) regras allow 9009 no firewall.`n"
+    Write-Output "`nForam removidas $($disableAllow.Count) regras 'allow 9009' do firewall.`n"
     Remove-NetFirewallRule -DisplayName "*allow*"
 }
 

@@ -17,7 +17,7 @@ if ($nomes.Count -eq 0) {
 
 # Pergunta a quantidade de grupos
 do {
-    $quantidadeGrupos = Read-Host "Digite a quantidade de grupos (mínimo 2)"
+    $quantidadeGrupos = Read-Host "Digite a quantidade de grupos (mínimo 2): "
 } while ($quantidadeGrupos -lt 2)
 
 # Embaralha a lista de nomes

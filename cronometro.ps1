@@ -1,55 +1,72 @@
 # & $sd\cronometro.ps1 -Minutos 1 -Espera 15 -Loop
 # Contador de minutos (não suporta horas), mas se usar o tempo convertido em minutos ele funciona normalmente, um bip toca no fim e com a opção de usar loop. Caso contrário ele vai fazer a contagem e parar após o bip.
 param(
-    [Parameter(Mandatory=$true)]
-    [int]$Minutos,
+    [Alias('M', 'Minutos')]
+    [int]$TotalMinutos = 0,
+
+    [Alias('S', 'Segundos')]
+    [int]$TotalSegundos = 60,
     
+    [Alias('E')]
     [int]$Espera = 0,
     
-    [switch]$Loop
+    [int]$loopCount = 1,
+    
+    # Definindo Tempo Inicial
+    [int]$min = 0,
+    [int]$seg = 0,
+    
+    [bool]$TempoFinal = $true
 )
 
-# Se a opção de tempo de espera for usada o loop vai ser habilitado
+# Se a opção de tempo de espera for usada, o loop vai ser habilitado
 if ($Espera -gt 0) {
     [switch]$loop = $true
 } else {
     [switch]$loop = $false
 }
 
-# Variaveis 
-$totalMinutos = $Minutos
-$loopCount = 1
-
-# Corpo do código
-do {
-    # Cronometro
-    for ($min = 0; $min -lt $totalMinutos; $min++) {
-        for ($sec = 0; $sec -lt 60; $sec++) {
-            # Formatar os numeros para o padrão de tempo
-            $tempo = "{0:D2}:{1:D2}" -f $min, $sec
-            
-            # Escreve na mesma linha, com espaço final para limpar linhas anteriores
-            Write-Host ("`r Tempo: {0}`tRepetição: $loopCount  " -f $tempo) -NoNewline
-            
-            Start-Sleep -Seconds 1
-        }
-    }
-    
-    # {0:..}:{1:..} = primeiro e segundo item separados por ':'
-    # {..:D2} = Decimal com duas casas, será preenchido automaticamente com zero na frente caso o valor seja menor que 10
-    # Mostrar o tempo final
-    $sec = 0
-    $tempo = "{0:D2}:{1:D2}" -f $totalMinutos, $sec
-    Write-Host ("`r Tempo: {0}  " -f $tempo) -NoNewline
-    
+function myBeep {
     # Beep curto (Windows)
     try {
         [console]::beep(1000,300)
     } catch {
         # Em sistemas sem beep, uma alternativa simples: tocar um som do sistema (opcional)
-        Write-Host "`n (BEEP não suportado neste ambiente)`n"
+        Write-Host "`n(BEEP não suportado neste ambiente)`n" -ForegroundColor Red
     }
-    
+}
+
+# Corpo do código
+do {
+    # Cronometro
+    while ($TempoFinal -eq $true) {
+        # {0:..}:{1:..} = primeiro e segundo item separados por ':'
+        # {..:D2} = Decimal com duas casas, será preenchido automaticamente com zero na frente caso o valor seja menor que 10
+        # Formatar os numeros para o padrão de tempo
+        $tempo = "{0:D2}:{1:D2}" -f $min, $seg
+
+        # Escreve na mesma linha, com espaço final para limpar linhas anteriores
+        Write-Host ("`r Tempo: {0}`t" -f $tempo) -NoNewline
+        if ($loopCount -gt 1) {
+            Write-Host "Repetição: $loopCount`t" -NoNewline
+        }
+
+        # Break element
+        if ($seg -eq $totalSegundos -and $min -eq $totalMinutos) {
+            Write-Host "Tempo Alcançado"
+            myBeep
+            $TempoFinal = $false
+        }
+        # Incrementos
+        $seg++
+        if ($seg -eq 60) {
+            $seg = 0
+            $min++
+        }
+
+        Start-Sleep -Seconds 1
+    }
+
     # Opcional: pequena pausa antes de reiniciar
     if ($Espera -gt 0 -and $Loop) {        
         switch ($Espera) {
@@ -68,4 +85,3 @@ do {
 } while (
     $Loop
 )
-

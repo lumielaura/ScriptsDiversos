@@ -88,7 +88,7 @@ function registrarLog {
 
 # criando barra colorida
 $cBar = '='
-$nBar = 48
+$nBar = 50
 function barraStatus {
     Write-Host ($cBar*$nBar) -ForegroundColor Yellow
 }
@@ -154,6 +154,7 @@ function statusWindown {
     Write-Host " Testando conectividade com " -ForegroundColor Cyan -NoNewline
     if ($null -eq $siteResolvido) {
         Write-Host "Erro na busca ao nome de IP" -ForegroundColor Red
+        $siteResolvido = Test-Connection $site -Count 1 -ResolveDestination -ErrorAction SilentlyContinue
     } else {
         Write-Host "$($siteResolvido.Destination)" -ForegroundColor Yellow        
     }

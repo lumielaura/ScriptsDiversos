@@ -5,11 +5,12 @@ param(
     [int]$TotalMinutos = 0,
 
     [Alias('S', 'Segundos')]
-    [int]$TotalSegundos = 60,
+    [int]$TotalSegundos = 0,
     
     [Alias('E')]
     [int]$Espera = 0,
     
+    [switch]$Loop,
     [int]$loopCount = 1,
     
     # Definindo Tempo Inicial
@@ -18,13 +19,6 @@ param(
     
     [bool]$TempoFinal = $true
 )
-
-# Se a opção de tempo de espera for usada, o loop vai ser habilitado
-if ($Espera -gt 0) {
-    [switch]$loop = $true
-} else {
-    [switch]$loop = $false
-}
 
 function myBeep {
     # Beep curto (Windows)
@@ -52,11 +46,12 @@ do {
         }
 
         # Break element
-        if ($seg -eq $totalSegundos -and $min -eq $totalMinutos) {
-            Write-Host "Tempo Alcançado"
+        if ($seg -eq $totalSegundos -and $min -eq $TotalMinutos) {
+            Write-Host "Tempo Alcançado Segundos"
             myBeep
             $TempoFinal = $false
         }
+
         # Incrementos
         $seg++
         if ($seg -eq 60) {
@@ -65,6 +60,13 @@ do {
         }
 
         Start-Sleep -Seconds 1
+    }
+
+    # Se a opção de tempo de espera for usada, o loop vai ser habilitado
+    if ($Espera -gt 0) {
+        [switch]$loop = $true
+    } else {
+        [switch]$loop = $false
     }
 
     # Opcional: pequena pausa antes de reiniciar

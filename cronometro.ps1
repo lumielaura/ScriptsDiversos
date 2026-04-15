@@ -10,14 +10,18 @@ param(
     [Alias('E')]
     [int]$Espera = 0,
     
-    [switch]$Loop,
+    [Alias('L')]
+    [switch]$Loop = $false,
+
     [int]$loopCount = 1,
     
     # Definindo Tempo Inicial
     [int]$min = 0,
     [int]$seg = 0,
     
-    [bool]$TempoFinal = $true
+    [bool]$TempoFinal = $true,
+
+    [bool]$Termino = $false
 )
 
 function myBeep {
@@ -31,7 +35,7 @@ function myBeep {
 }
 
 # Corpo do código
-do {
+while ($Termino -eq $false) {
     # Cronometro
     while ($TempoFinal -eq $true) {
         # {0:..}:{1:..} = primeiro e segundo item separados por ':'
@@ -47,7 +51,9 @@ do {
 
         # Break element
         if ($seg -eq $totalSegundos -and $min -eq $TotalMinutos) {
-            Write-Host "Tempo Alcançado Segundos"
+            Write-Host '[' -NoNewline
+            Write-Host (Get-date -Format "HH:mm:ss") -NoNewline
+            Write-Host ']'
             myBeep
             $TempoFinal = $false
         }
@@ -62,11 +68,21 @@ do {
         Start-Sleep -Seconds 1
     }
 
+    # Se o loop for usado
+    if ($Loop) {
+        $min = 0
+        $seg = 0
+        if ($Espera -eq 0) {
+            # Tempo padrao de espera
+            $Espera = 10
+        }
+    }
+
     # Se a opção de tempo de espera for usada, o loop vai ser habilitado
     if ($Espera -gt 0) {
-        [switch]$loop = $true
+        [bool]$TempoFinal = $true
     } else {
-        [switch]$loop = $false
+        [bool]$Termino = $true
     }
 
     # Opcional: pequena pausa antes de reiniciar
@@ -84,6 +100,4 @@ do {
         }
     }
 
-} while (
-    $Loop
-)
+}

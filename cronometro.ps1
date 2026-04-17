@@ -6,25 +6,42 @@ param(
 
     [Alias('S', 'Segundos')]
     [int]$TotalSegundos = 0,
-    
+
     [Alias('E')]
     [int]$Espera = 0,
-    
+
     [Alias('L')]
     [switch]$Loop = $false,
 
+    [Alias('R')]
+    [switch]$Regressivo = $false,
+
     [int]$loopCount = 1,
-    
-    # Definindo Tempo Inicial
-    [int]$min = 0,
-    [int]$seg = 0,
-    
+
     [bool]$TempoFinal = $true,
 
     [bool]$Termino = $false
 )
 
+# Definindo variaveis de Tempo Inicial e a troca de valores caso seja usado o tempo regressivo
+[int]$min = 0
+[int]$seg = 0
+# Usando Regressivo
+if ($Regressivo) {
+    [int]$min = $TotalMinutos
+    [int]$seg = $TotalSegundos
+    [int]$copyTM = $TotalMinutos
+    [int]$copyTS = $TotalSegundos
+    [int]$TotalMinutos = 0
+    [int]$TotalSegundos = 0
+}
+
 function myBeep {
+    # Mostra a hora que terminou
+    Write-Host '[' -NoNewline
+    Write-Host (Get-date -Format "HH:mm:ss") -NoNewline
+    Write-Host ']'
+
     # Beep curto (Windows)
     try {
         [console]::beep(1000,300)
@@ -51,36 +68,49 @@ while ($Termino -eq $false) {
 
         # Break element
         if ($seg -eq $totalSegundos -and $min -eq $TotalMinutos) {
-            Write-Host '[' -NoNewline
-            Write-Host (Get-date -Format "HH:mm:ss") -NoNewline
-            Write-Host ']'
+            myBeep
+            $TempoFinal = $false
+        } elseif ($Regressivo -and $min -eq 0 -and $seg -eq 0) {
             myBeep
             $TempoFinal = $false
         }
 
         # Incrementos
-        $seg++
-        if ($seg -eq 60) {
-            $seg = 0
-            $min++
+        if ($Regressivo -eq $false) {
+            # Up
+            $seg++
+            if ($seg -eq 60) {
+                $seg = 0
+                $min++
+            }
+        } elseif ($Regressivo -eq $true) {
+            # Down
+            $seg--
+            if ($seg -eq -1) {
+                $seg = 59
+                $min--
+            }
+        } else {
+            Write-Host 'Erro na entrada de parâmetro. (minutos/segundos)'
+            exit
         }
 
+        # Segundo
         Start-Sleep -Seconds 1
     }
 
-    # Se o loop for usado
-    if ($Loop) {
-        $min = 0
-        $seg = 0
-        if ($Espera -eq 0) {
-            # Tempo padrao de espera
-            $Espera = 10
-        }
-    }
-
-    # Se a opção de tempo de espera for usada, o loop vai ser habilitado
+    # Se a opção de tempo de espera ou loop  for usada, reconfigurar o tempo
     if ($Espera -gt 0) {
         [bool]$TempoFinal = $true
+    } elseif ($Loop) {
+        [bool]$TempoFinal = $true
+        [int]$min = 0
+        [int]$seg = 0
+        # Usando Regressivo
+        if ($Regressivo) {
+            [int]$min = $copyTM
+            [int]$seg = $copyTS
+        }
     } else {
         [bool]$Termino = $true
     }

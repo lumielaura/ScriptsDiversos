@@ -1,12 +1,13 @@
 <#
 .SYNOPSIS
-    Faz um teste da conexão de internet.
+    Faz um teste da conexão com a internet.
 .DESCRIPTION
     Faz um teste simples com ip definido no inicio do arquivo, mostra um gráfico com o valor de ping, estado da internet (com arquivo de log) e estabilidade da rede.
 .NOTES
     Sem notas adicionais.
 .EXAMPLE
     ./internetStatus.ps1
+    & $sd\internetStatus.ps1
 #>
 
 # Ip usado para testar a conexao
@@ -154,7 +155,7 @@ function statusWindown {
     Write-Host " Testando conectividade com " -ForegroundColor Cyan -NoNewline
     if ($null -eq $siteResolvido) {
         Write-Host "Erro na busca ao nome de IP" -ForegroundColor Red
-        $siteResolvido = Test-Connection $site -Count 1 -ResolveDestination -ErrorAction SilentlyContinue
+        Test-Connection $site -Count 1 -ResolveDestination -ErrorAction SilentlyContinue -OutVariable siteResolvido
     } else {
         Write-Host "$($siteResolvido.Destination)" -ForegroundColor Yellow        
     }

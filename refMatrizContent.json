@@ -1,0 +1,32 @@
+[
+  {
+    "Nome": "Anderson",
+    "Sexo": "M",
+    "Cargo": "Clero"
+  },
+  {
+    "Nome": "Ana",
+    "Sexo": "F",
+    "Cargo": "Engenheira"
+  },
+  {
+    "Nome": "Carlos",
+    "Sexo": "M",
+    "Cargo": "Empresário"
+  },
+  {
+    "Nome": "Júlio",
+    "Sexo": "M",
+    "Cargo": "Pastor"
+  },
+  {
+    "Nome": "Suzana",
+    "Sexo": "F",
+    "Cargo": "Guerreira"
+  },
+  {
+    "Nome": "Anderson",
+    "Sexo": "M",
+    "Cargo": "Empreteiro"
+  }
+]

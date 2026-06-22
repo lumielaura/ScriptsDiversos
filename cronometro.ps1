@@ -18,6 +18,8 @@ param(
 
     [int]$loopCount = 1,
 
+    [string]$Mensagem,
+
     [bool]$TempoFinal = $true,
 
     [bool]$Termino = $false
@@ -50,6 +52,9 @@ function myBeep {
         Write-Host "`n(BEEP não suportado neste ambiente)`n" -ForegroundColor Red
     }
 }
+
+# Grava a hora de início
+$inicio = Get-Date
 
 # Corpo do código
 while ($Termino -eq $false) {
@@ -97,8 +102,9 @@ while ($Termino -eq $false) {
 
         # Segundo
         Start-Sleep -Seconds 1
-    }
+    } # Fim das funções de tempo
 
+    # Início das configurações opcionais
     # Se a opção de tempo de espera ou loop  for usada, reconfigurar o tempo
     if ($Espera -gt 0) {
         [bool]$TempoFinal = $true
@@ -115,11 +121,13 @@ while ($Termino -eq $false) {
         [bool]$Termino = $true
     }
 
+    # Incrementando loop count
+    $loopCount++
+
     # Opcional: pequena pausa antes de reiniciar
     if ($Espera -gt 0 -and $Loop) {        
         switch ($Espera) {
             {$true} { 
-                $loopCount++
                 for ($i = $Espera; $i -ge 0; $i--) {
                     $ProximaOnda = "{0:D2} " -f $i
                     Write-Host ("`r Próxima: {0} `tRepetição: $loopCount  " -f $ProximaOnda) -NoNewline -ForegroundColor Red
@@ -130,4 +138,17 @@ while ($Termino -eq $false) {
         }
     }
 
+    # Opcional: Mensagem extra após no fim de cada turno
+    if ($Mensagem) {
+        Write-Host " Mensagem: $Mensagem" -ForegroundColor Blue
+    }
 }
+
+# Grava a hora do final
+$fim = Get-Date
+
+# Calcula a diferença
+$duracao = $fim - $inicio
+
+# Exibe o resultado formatado
+Write-Host " Tempo total: $($duracao.ToString('hh\:mm\:ss'))" -ForegroundColor Green

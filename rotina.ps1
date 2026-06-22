@@ -1,3 +1,6 @@
+# Atualizar todos os programas
+winget upgrade --all --accept-source-agreements --accept-package-agreements
+
 # Rotina que limpa todo o lixo eletronico peridioticamente
 try {
     # Removendo regra do firewall

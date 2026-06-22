@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pegando dados Json</title>
+    
+    <style>
+        :root{
+            --bg:#8ec89f;
+            --panel:#cfb0e4;
+            --accent:#caa8ff;
+            --accent-2:#f6b7ff;
+            --text:#000000;
+            --muted:#7a5f7a;
+            --radius:14px;
+            --font-heading: 'Playfair Display', serif;
+            --font-text: 'Montserrat', sans-serif;
+            --max-width:1100px;
+        }
+        *{box-sizing:border-box}
+        body{
+            margin:0; padding:32px; background:linear-gradient(180deg,var(--bg),#c9e3ca); color:var(--text); font-family:var(--font-text);
+            display:flex; justify-content:center;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div id="produtos"></div>
+
+    <script>
+
+
+        const divProdutos = document.querySelector("#produtos")
+
+        fetch("dados.json").then((response) =>{
+            // response.json().then((produtos) =>{
+            //     console.log(produtos); // Teste para saber se os dados estão sendo acessados
+            // })
+            response.json().then((dados) => {
+                console.log(dados.produtos); // Verifica se os dados estão chegando corretamente - olhar no console do navegador
+                dados.produtos.map((produto) => {
+                    divProdutos.innerHTML += `<li> ${produto.id} - ${produto.nome} - ${produto.preco} </li>`
+                })
+            })
+        })
+
+
+    </script>
+</body>
+</html>

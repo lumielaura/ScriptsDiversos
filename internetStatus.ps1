@@ -14,7 +14,7 @@
 $site = "8.8.8.8"
 
 # Nome resolvido para mostrar na tela
-$siteResolvido = Test-Connection $site -Count 1 -ResolveDestination -ErrorAction SilentlyContinue
+$siteResolvido = Test-Connection -IPv4 $site -Count 1 -ResolveDestination -TimeoutSeconds 1 -ErrorAction SilentlyContinue
 
 # Intervalo entre testes (em segundos)
 $intervalo = 10
@@ -155,7 +155,14 @@ function statusWindown {
     Write-Host " Testando conectividade com " -ForegroundColor Cyan -NoNewline
     if ($null -eq $siteResolvido) {
         Write-Host "Erro na busca ao nome de IP" -ForegroundColor Red
-        Test-Connection $site -Count 1 -ResolveDestination -ErrorAction SilentlyContinue -OutVariable siteResolvido
+        try {
+            $siteResolvido = Test-Connection -IPv4 $site -Count 1 -ResolveDestination -TimeoutSeconds 1 -ErrorAction SilentlyContinue
+            
+            # Test-Connection $site -Count 1 -ResolveDestination -ErrorAction SilentlyContinue -OutVariable siteResolvido
+        }
+        catch {
+            Write-Host " Falha na conexão de rede - Nome IP não resolvido" -ForegroundColor Red
+        }
     } else {
         Write-Host "$($siteResolvido.Destination)" -ForegroundColor Yellow        
     }

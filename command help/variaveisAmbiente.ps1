@@ -18,3 +18,5 @@ Get-ChildItem ENV: | Where-Object {$_.Name -match "^PATH$|^TEMP$" , "*File" } | 
 # | Divide as Palavras que podem ser pesquisadas
 # * qualquer caractere pode entrar nesta posição
 
+$variavel = 0
+$variavel.GetType().FullName # tipo da variável recebida

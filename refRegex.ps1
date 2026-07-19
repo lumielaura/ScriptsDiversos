@@ -1,5 +1,29 @@
 # Regex reference
-# \d      Any digit (0-9)                                             \d{3} matches 123
+
+# # 1. \d (Dígito)
+# O que faz: Captura qualquer número (dígito numérico) de 0 a 9.
+# Exemplos válidos: 0, 5, 9.
+# Exemplos inválidos: a, -,   (espaço).
+
+# # 2. \D (Não-Dígito)
+# O que faz: Captura qualquer caractere que não seja um número.
+# Exemplos válidos: a, Z, $, -,   (espaço).
+# Exemplos inválidos: 1, 7.
+
+# # 3. \w (Word / Caractere Alfanumérico)
+# O que faz: Captura letras (maiúsculas e minúsculas), números e o caractere underline (_).
+# Equivalência: É o mesmo que [a-zA-Z0-9_].
+# Exemplos válidos: a, B, 3, _.
+# Exemplos inválidos: @, -, .,   (espaço).
+
+# # 4. \W (Não-Alfanumérico)
+# O que faz: Captura qualquer caractere que não seja letra, número ou underline. É usado para encontrar símbolos, pontuação e espaços.
+# Exemplos válidos: @, -, !,   (espaço).
+# Exemplos inválidos: x, 8, _.
+
+# ===============================
+
+# \d      Any digit (0-9)                                             \d{3} matches 123 [range: 000 - 999]
 # \w      Word character (alphanumeric & underscore)                  \w+ matches Server_1
 # \s      Whitespace (spaces, tabs)                                   \s+ matches variable spacing
 # .       Any single character (except a newline)                     c.t matches cat or cot
@@ -10,7 +34,7 @@
 # ===============================
 
 # Check Match
-# -match
+# -match | Busca Parcial | Todo o texto não explícito é ignorado pelo motor de busca | As partes entre () são salvas em $matches
 # Returns $true or $false and populates $Matches (Automatic)
 "Server-01" -match "Server-\d\d"   # Returns $true
 "server-01" -cmatch "Server-\d\d"  # Returns $false (due to lowercase 's')
@@ -26,6 +50,15 @@ if ("Order #94827 processed" -match "Order #(\d+)") {
 'CN=Administrator,CN=Users,DC=wef,DC=com' -match 'CN=(\w+)'
 # output: true
 
+# -match | Busca Exata | Todo o texto dentro de ^$ será validado do início ao fim | As partes dentro de [] são tratadas como literal exceto '-' usado em range /erro comum [0,3] - Aceita os caracteres '0' ',' '3' como resultado/
+"99" -match '^\d{2}$' # Retorna True
+"123" -match '^\d{2}$' # Retorna False
+
+# Validação de hora
+"23:10" -match "^([01]\d|2[0-3]):[0-5]\d$" # Retorna True
+"28:10" -match "^([01]\d|2[0-3]):[0-5]\d$" # Retorna False
+
+
 # ===============================
 
 # Replace Text
@@ -34,13 +67,13 @@ if ("Order #94827 processed" -match "Order #(\d+)") {
 # Format a phone number by stripping everything except digits
 "123-456-7890" -replace "\D", "" # Output: 1234567890
 "192.168.1.1Aquilo-Isso10.0.0.5" -replace "\D", ""  
-# Output: 1921681110005 (Deixa apenas N°)
+# Output: 1921681110005 (Apenas N° | Retira o texto)
 "192.168.1.1Aquilo-Isso10.0.0.5" -replace "\d", ""  
-# Output: ...Aquilo-Isso... (Retira os N°)
+# Output: ...Aquilo-Isso... (Apenas Texto |Retira os N°)
 "Apenas XFV 192.168.1.1Aquilo-Isso10.0.0.5" -replace "\w", ""  
-# Output: ...Aquilo-Isso... (Retira os N°)
+# Output: ...Aquilo-Isso... (Apenas Texto |Retira os N°)
 "Não vou 192.168.1.1Aquilo-Isso10.0.0.5" -replace "\W", ""  
-# Output: ...Aquilo-Isso... (Retira os N°)
+# Output: ...Aquilo-Isso... (Apenas Texto |Retira os N°)
 
 # Reorder names using capture groups
 "John Smith" -replace "^(\w+)\s+(\w+)$", '$2, $1'

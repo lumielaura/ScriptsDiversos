@@ -11,10 +11,16 @@
     ./verHora.ps1
     & $sd\verHora.ps1
     & $sd\verHora.ps1 -Alarme 11:30
+    & $sd\verHora.ps1 -Alarme 11:35 -Sincronizar $false
+    & $sd\verHora.ps1 -A 12:30 -S $false
 #>
 
 param (
-    $Alarme
+    [Alias('A')]
+    $Alarme,
+
+    [Alias('S')]
+    [bool]$Sincronizar = $true
 )
 
 function myBeep {
@@ -23,15 +29,10 @@ function myBeep {
 
     # Beep curto (Windows)
     try {
-        [console]::beep(1000,500)
-        Start-Sleep -Milliseconds 600
-        [console]::beep(1000,500)
-        Start-Sleep -Milliseconds 600
-        [console]::beep(1000,500)
-        Start-Sleep -Milliseconds 600
-        [console]::beep(1000,500)
-        Start-Sleep -Milliseconds 600
-        [console]::beep(1000,500)
+        for ($i = 0; $i -lt 5; $i++) {
+            [console]::beep(1000,500)
+            Start-Sleep -Milliseconds 600
+        }
     } catch {
         # Em sistemas sem beep, uma alternativa simples: tocar um som do sistema (opcional)
         Write-Host "`n(BEEP não suportado neste ambiente)`n" -ForegroundColor Red
@@ -42,26 +43,33 @@ try {
     # calcular segundos restantes
     $segundos = 60-[int](get-date -Format "ss")
     $ponto = 1
-    
-    # sincronizar hora
-    for($i = $segundos; $i -gt 0; $i--)
-    {
-        Write-Host "`r Sincronizando: $i " -NoNewline -ForegroundColor Blue
-        Write-Host ('.' * $ponto + '  ') -NoNewline -ForegroundColor Blue
-        if ($ponto -eq 3) {
-            $ponto = 0
-        }    
-        $ponto++
-        Start-Sleep -Seconds 1
+
+    # Alarme
+    if ($Alarme -match "^([01]\d|2[0-3]):[0-5]\d$") {
+        $alaVar = $Alarme -split ':'
+        Write-Host " Alarme Programado: " -ForegroundColor Blue -NoNewline
+        Write-Host $Alarme -ForegroundColor DarkYellow
+    } elseif ($Alarme -like "*" -and $null -ne $Alarme) {
+        Write-Host " Erro: O Alarme esta no formato errado`n Digite-o da seguinte forma: " -ForegroundColor Red -NoNewline
+        Write-Host "$(Get-date -Format "HH:mm")" -ForegroundColor White
+        exit
     }
 }
-finally {
-    Write-Host "`r Sincronizando: OK   " -ForegroundColor Blue 
-    
-    # Alarme
-    if ($Alarme) {
-        $alaVar = $Alarme -split ':'
-        Write-Host " Alarme Programado: $($Alarme)" -ForegroundColor Blue
+finally {      
+    # sincronizar hora
+    if ($Sincronizar) { # is true
+        for($i = $segundos; $i -gt 0; $i--)
+        {
+            Write-Host "`r Sincronizando: $i " -NoNewline -ForegroundColor Blue
+            Write-Host ('.' * $ponto + '  ') -NoNewline -ForegroundColor Blue
+            if ($ponto -eq 3) {
+                $ponto = 0
+            }    
+            $ponto++
+            Start-Sleep -Seconds 1
+        }
+        Write-Host "`r Sincronizando: " -ForegroundColor Blue -NoNewline
+        Write-Host "OK   " -ForegroundColor DarkYellow
     }
 }
 
@@ -74,7 +82,7 @@ while ($true) {
     # Alarme
     if ($Alarme) {
         $tempoVar = $tempo -split ':'
-        if ($tempoVar[0] -ge $alaVar[0] -and $tempoVar[1] -ge $alaVar[1]) {
+        if ($tempoVar[0] -eq $alaVar[0] -and $tempoVar[1] -ge $alaVar[1]) {
             myBeep
             Break
         }

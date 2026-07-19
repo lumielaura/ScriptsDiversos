@@ -27,4 +27,4 @@ ForEach-Object -Process {
 }
 
 
-# "Game Bar" - não desinstalar esse item
+# "Game Bar" - não desinstalar este -item- | problemas com jogos ocorrem frequentemente, pedindo a instalação de um programa
